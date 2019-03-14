@@ -12,7 +12,7 @@ gc()
 
 inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
 
-source(paste(inf_home, 'R_scripts', 'utils.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'utils.R', sep="/"), local=TRUE)
 source(paste(inf_home, 'R_scripts', 'design_and_response.R', sep="/"))
 source(paste(inf_home, 'R_scripts', 'priors.R', sep="/"))
 source(paste(inf_home, 'R_scripts', 'mi_and_clr.R', sep="/"))
