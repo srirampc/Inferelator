@@ -1,3 +1,13 @@
+INSTALL
+-------
+
+1. Install dependencies : install.packages('here')
+2. clone this repository.
+
+
+RUN
+---
+
 Call the inferelator script from the base directory (the one containing this 
 README) with a job config file as argument. 
 
