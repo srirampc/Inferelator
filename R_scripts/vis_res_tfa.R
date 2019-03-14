@@ -1,5 +1,6 @@
 library('Matrix')
-source('R_scripts/priors.R')
+inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
+source(paste(inf_home, 'R_scripts', 'priors.R', sep="/"))
 
 ChristophsPR <- function(ord.idx, gs) {
   prec <- cumsum(gs[ord.idx]) / cumsum(rep(1, length(ord.idx)))

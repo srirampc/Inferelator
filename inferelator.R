@@ -10,17 +10,19 @@ library('Matrix')
 rm(list=ls())
 gc()
 
-source(here::here('R_scripts', 'utils.R'))
-source(here::here('R_scripts', 'design_and_response.R'))
-source(here::here('R_scripts', 'priors.R'))
-source(here::here('R_scripts', 'mi_and_clr.R'))
-source(here::here('R_scripts', 'bayesianRegression.R'))
-source(here::here('R_scripts', 'men.R'))
-source(here::here('R_scripts', 'evaluate.R'))
-source(here::here('R_scripts', 'tfa.R'))
-source(here::here('R_scripts', 'group_predictors.R'))
-source(here::here('R_scripts', 'summarize_results.R'))
-source(here::here('R_scripts', 'vis_tfs_and_targets.R'))
+inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
+
+source(paste(inf_home, 'R_scripts', 'utils.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'design_and_response.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'priors.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'mi_and_clr.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'bayesianRegression.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'men.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'evaluate.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'tfa.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'group_predictors.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'summarize_results.R', sep="/"))
+source(paste(inf_home, 'R_scripts', 'vis_tfs_and_targets.R', sep="/"))
 
 
 date.time.str <- format(Sys.time(), "%Y-%m-%d_%H-%M-%S")
@@ -429,7 +431,7 @@ PROCTIME <- proc.time() - start.proc.time
 save(PARS, IN, SEED, PROCTIME, file = paste(PARS$save.to.dir, "/params_and_input.RData", sep=""))
 
 # generate network report and visualize TFs and targets
-source('R_scripts/net_report_new.R')
+source(paste(inf_home, 'R_scripts', 'net_report_new.R', sep="/"))
 Sys.sleep(2)
 for (ccf in list.files(PARS$save.to.dir, pattern='combinedconf_*', full.names=TRUE)) {
   if (PARS$output.report) {

@@ -1,5 +1,6 @@
 library('Matrix')
-source('R_scripts/evaluate.R')
+inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
+source(paste(inf_home, 'R_scripts', 'evaluate.R', sep="/"))
 
 get.mean.and.lh <- function(mat) {
   ret <- list()
@@ -62,7 +63,8 @@ sum.net <- function(betas, betas.resc, comb.confs, IN, cc.file, th=0.5) {
   cat('A total of', length(gp$pred.has.na), 'predictors contained NA and were removed.\n')
   cat('A total of', length(gp$pred.is.const), 'predictors were constant and were removed.\n')
   cat('A total of', length(unique(unlist(gp$pred.groups))), 'predictors formed', length(gp$pred.groups), 'groups.\n')
-  source('R_scripts/evaluate.R')
+  inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
+  source(paste(inf_home, 'R_scripts', 'evaluate.R', sep="/"))
   cc.aupr <- aupr(comb.confs, p.mat, eval.on.subset=TRUE)
   cat('AUPR is', cc.aupr, '\n')
 
