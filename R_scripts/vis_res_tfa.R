@@ -1,5 +1,15 @@
 library('Matrix')
-inf_home = if(length(Sys.getenv("INF_HOME")) > 1){ Sys.getenv("INF_HOME")} else { "." }
+
+inf_home = if(dir.exists("/usr/local/bin/R_scripts")) { 
+   "/usr/local/bin/" 
+} else { 
+   if(length(Sys.getenv("INF_HOME")) > 1){
+      Sys.getenv("INF_HOME")
+   } else {
+     "."
+   }
+}
+
 source(paste(inf_home, 'R_scripts', 'priors.R', sep="/"))
 
 ChristophsPR <- function(ord.idx, gs) {
